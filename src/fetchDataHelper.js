@@ -8,6 +8,7 @@ const recordMetadata = {
 };
 
 export default function fetchDataHelper({ amountOfRecords }) {
+    
     return fetch('https://data-faker.herokuapp.com/collection', {
         method: 'POST',
         headers: {
