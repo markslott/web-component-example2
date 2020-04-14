@@ -5,7 +5,7 @@ import './contacts.css';
 //This is the module that defines the behavior of our web component
 class Contacts extends React.Component {
 
-    //in the constuctor we initilize state, add our event listeners, and create the 
+    //in the constuctor we initilize state, add our event listeners, and create the
     //shadow DOM. Props contains properties (like the title) in the constructor.
     constructor(props) {
         super(props);
@@ -24,14 +24,20 @@ class Contacts extends React.Component {
         this.getData();
     }
 
+    rowSelected(event) {
+      console.log("event",event);
+      console.log("event.target",event.target);
+      this.props.callbackParent(event.target);
+    }
+
     async getData() {
         const data = await fetchDataHelper({ amountOfRecords: 10 });
         this.setState({contacts : data});
         console.log(data);
     }
 
-    //this function renders the component when the state changes. It uses JSX which 
-    //merges HTML into Javascript as a 1st class citizen. 
+    //this function renders the component when the state changes. It uses JSX which
+    //merges HTML into Javascript as a 1st class citizen.
     render() {
         const rows = [];
         this.state.contacts.forEach((item, index) =>  {
@@ -60,7 +66,7 @@ class Contacts extends React.Component {
                             <th>Phone</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody onClick={event => this.rowSelected(event)}>
                         {rows}
                     </tbody>
                 </table>

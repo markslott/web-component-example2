@@ -6,8 +6,8 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    
-    <Contacts title="My Contacts"></Contacts>
+
+    <Contacts title="My React Contacts" callbackParent={event=>console.log("parent event",event)}></Contacts>
   </React.StrictMode>,
   document.getElementById('root')
 );
